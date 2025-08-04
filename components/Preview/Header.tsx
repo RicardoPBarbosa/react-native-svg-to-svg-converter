@@ -6,7 +6,7 @@ export default function SVGPreviewHeader() {
   return (
     <>
       <CardTitle className="flex items-center text-left gap-2 md:text-lg">
-        <Eye className="w-5 h-5 flex-none" />
+        <Eye className="size-5 flex-none" />
         SVG Preview
       </CardTitle>
       <CardDescription className="hidden md:block">

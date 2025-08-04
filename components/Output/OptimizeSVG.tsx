@@ -49,7 +49,7 @@ export default function OptimizeSVG() {
       onClick={handleSubmit}
       disabled={!outputCode || loading}
     >
-      <Cog className="w-4 h-4 mr-2 hidden md:inline" />
+      <Cog className="size-4 mr-2 hidden md:inline" />
       Optimize <span className="hidden md:inline">SVG</span>
     </Button>
   );

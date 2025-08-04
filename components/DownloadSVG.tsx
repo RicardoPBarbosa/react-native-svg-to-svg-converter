@@ -2,9 +2,10 @@
 
 import { Download } from "lucide-react";
 
-import { useSvgConverter } from "@/context";
-import { Button } from "./ui/button";
 import { track } from "@/lib/tracking";
+import { useSvgConverter } from "@/context";
+import Footer from "./Footer";
+import { Button } from "./ui/button";
 
 export default function DownloadSVG() {
   const {
@@ -35,9 +36,11 @@ export default function DownloadSVG() {
         size="lg"
         className="!px-10 py-6"
       >
-        <Download className="w-4 h-4 mr-2" />
+        <Download className="size-4 mr-2" />
         Download SVG
       </Button>
+
+      <Footer />
     </div>
   );
 }

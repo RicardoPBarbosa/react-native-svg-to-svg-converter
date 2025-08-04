@@ -23,7 +23,7 @@ export default function SVGPreview() {
         </div>
       ) : (
         <div className="text-gray-400 text-center flex flex-col justify-center-safe items-center h-full">
-          <Eye className="w-12 h-12 mx-auto mb-2 opacity-50" />
+          <Eye className="size-12 mx-auto mb-2 opacity-50" />
           <p>SVG preview will appear here</p>
         </div>
       )}

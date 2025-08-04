@@ -6,7 +6,7 @@ export default function InputHeader() {
   return (
     <>
       <CardTitle className="flex items-center text-left gap-2 md:text-lg">
-        <FileCode className="w-5 h-5 flex-none" />
+        <FileCode className="size-5 flex-none" />
         React Native SVG Input
       </CardTitle>
       <CardDescription className="hidden md:block">

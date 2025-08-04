@@ -35,7 +35,7 @@ export default function FormatOutputCode() {
       onClick={handleFormatCode}
       disabled={!outputCode}
     >
-      <Code className="w-4 h-4 mr-2 hidden md:inline" />
+      <Code className="size-4 mr-2 hidden md:inline" />
       Format <span className="hidden md:inline">code</span>
     </Button>
   );
