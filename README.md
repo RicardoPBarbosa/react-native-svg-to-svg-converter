@@ -16,37 +16,31 @@ You can then copy the converted SVG code to your clipboard or download the SVG f
 
 # Setup
 
-In the project directory, you can run:
+Use Node.js `22.13.0` or newer in the 22.x line, or Node.js 24.x. The root `.nvmrc` selects Node.js 24. Use pnpm `11.9.0`.
 
-### `pnpm install`
+Install the locked dependencies:
 
-To install all the dependencies required for the project.
+```sh
+pnpm install --frozen-lockfile
+```
 
-### `pnpm dev`
+Start the development server with `pnpm dev`, then open [http://localhost:3000](http://localhost:3000).
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Run the static checks separately:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+```sh
+pnpm lint
+pnpm typecheck
+```
 
-### `pnpm lint`
+Create and run the production build with:
 
-Runs the linter to check for code quality issues.\
-It will analyze your code and report any issues found.
+```sh
+pnpm build
+pnpm start
+```
 
-### `pnpm build`
-
-Builds the app for production to the `dist` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-### `pnpm start`
-
-Runs the app in production mode.\
-You need to run `pnpm build` first to generate the production build.
+The production build is written to `.next`. Next.js builds do not run lint or type checking, so run both checks explicitly before release. Deployments should use the same supported Node.js runtime listed above.
 
 # License
 This project is licensed under the MIT License.

@@ -42,9 +42,33 @@ export const SvgConverterProvider: React.FC<SvgConverterProviderProps> = ({
     error: null,
   });
 
+  const setInputCode = React.useCallback((code: string) => {
+    setState((prev) => ({ ...prev, inputCode: code }));
+  }, []);
+
+  const setOutputCode = React.useCallback((code: string) => {
+    setState((prev) => ({ ...prev, outputCode: code }));
+  }, []);
+
+  const setDimensions = React.useCallback(
+    (dimensions: { width: string; height: string }) => {
+      setState((prev) => ({ ...prev, dimensions }));
+    },
+    []
+  );
+
+  const setError = React.useCallback((error: string | null) => {
+    setState((prev) => ({ ...prev, error }));
+  }, []);
+
+  const setFileName = React.useCallback((fileName: string) => {
+    setState((prev) => ({ ...prev, fileName }));
+  }, []);
+
   React.useEffect(() => {
     if (state.inputCode.trim()) {
       try {
+        // eslint-disable-next-line react-hooks/set-state-in-effect -- Convert committed editor input into its existing derived context state.
         setError("");
         const result = convert(state.inputCode, setDimensions, setFileName);
         const prettified = prettify(result);
@@ -57,7 +81,7 @@ export const SvgConverterProvider: React.FC<SvgConverterProviderProps> = ({
       setOutputCode("");
       setError("");
     }
-  }, [state.inputCode]);
+  }, [state.inputCode, setDimensions, setError, setFileName, setOutputCode]);
 
   React.useEffect(() => {
     if (state.outputCode.trim()) {
@@ -68,31 +92,12 @@ export const SvgConverterProvider: React.FC<SvgConverterProviderProps> = ({
         const width = svgMatch[1];
         const height = svgMatch[3];
         if (!Number.isNaN(Number(width)) && !Number.isNaN(Number(height))) {
+          // eslint-disable-next-line react-hooks/set-state-in-effect -- Sync dimensions after manual output edits have committed.
           setDimensions({ width, height });
         }
       }
     }
-  }, [state.outputCode]);
-
-  const setInputCode = (code: string) => {
-    setState((prev) => ({ ...prev, inputCode: code }));
-  };
-
-  const setOutputCode = (code: string) => {
-    setState((prev) => ({ ...prev, outputCode: code }));
-  };
-
-  const setDimensions = (dimensions: { width: string; height: string }) => {
-    setState((prev) => ({ ...prev, dimensions }));
-  };
-
-  const setError = (error: string | null) => {
-    setState((prev) => ({ ...prev, error }));
-  };
-
-  const setFileName = (fileName: string) => {
-    setState((prev) => ({ ...prev, fileName }));
-  };
+  }, [state.outputCode, setDimensions]);
 
   return (
     <SvgConverterContext.Provider

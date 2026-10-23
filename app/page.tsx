@@ -74,22 +74,27 @@ export default function SVGConverter() {
         open={openSections.output}
         onOpenChange={() => toggleSection("output")}
       >
-        <CollapsibleTrigger className="w-full p-4 bg-white border-b flex items-center justify-between hover:bg-gray-50">
-          <OutputHeader />
-          <div className="flex items-center gap-2">
-            {openSections.output && (
-              <div className="flex gap-1 justify-end flex-wrap">
-                <OptimizeSVG />
-                <FormatOutputCode />
-              </div>
-            )}
+        <div className="w-full p-4 bg-white border-b flex items-center gap-2">
+          <CollapsibleTrigger className="flex-1 min-w-0 flex items-center text-left hover:bg-gray-50">
+            <OutputHeader />
+          </CollapsibleTrigger>
+          {openSections.output && (
+            <div className="flex shrink-0 gap-1 justify-end flex-wrap">
+              <OptimizeSVG />
+              <FormatOutputCode />
+            </div>
+          )}
+          <CollapsibleTrigger
+            aria-label="Toggle SVG Output"
+            className="flex shrink-0 items-center hover:bg-gray-50"
+          >
             {openSections.output ? (
               <ChevronUp className="w-4 h-4" />
             ) : (
               <ChevronDown className="w-4 h-4" />
             )}
-          </div>
-        </CollapsibleTrigger>
+          </CollapsibleTrigger>
+        </div>
         <CollapsibleContent>
           <div className="bg-white border-b h-64 p-4">
             <OutputEditor />
